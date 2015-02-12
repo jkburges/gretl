@@ -6,7 +6,18 @@ repositories {
 
 dependencies {
     compile 'org.codehaus.groovy:groovy-all:2.3.7'
+    compile 'com.xlson.groovycsv:groovycsv:1.0'
 
     testCompile 'org.spockframework:spock-core:0.7-groovy-2.0'
     testCompile 'junit:junit:4.11'
+}
+
+task runCsvSource(dependsOn: 'classes', type: JavaExec) {
+    main = 'com.jkburges.gretl.CsvSource'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task runHarness(dependsOn: 'classes', type: JavaExec) {
+    main = 'com.jkburges.gretl.Harness'
+    classpath = sourceSets.main.runtimeClasspath
 }
