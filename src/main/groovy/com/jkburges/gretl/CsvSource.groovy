@@ -17,7 +17,13 @@ class CsvSource {
         def csvFile = CsvParser.parseCsv(reader)
 
         csvFile.each { row ->
-            output(row)
+            output(toMap(row))
         }
+    }
+
+    // Pilfered from https://github.com/xlson/groovycsv/blob/master/src/com/xlson/groovycsv/PropertyMapper.groovy#L70
+    Map toMap(row) {
+        def sortedKeys = row.columns.keySet().sort { row.columns[it] }
+        [sortedKeys, row.values].transpose().collectEntries()
     }
 }
