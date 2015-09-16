@@ -12,12 +12,12 @@ dependencies {
     testCompile 'junit:junit:4.11'
 }
 
-task runCsvSource(dependsOn: 'classes', type: JavaExec) {
-    main = 'com.jkburges.gretl.CsvSource'
+task runHarness(dependsOn: 'classes', type: JavaExec) {
+    main = 'com.jkburges.gretl.Harness'
     classpath = sourceSets.main.runtimeClasspath
 }
 
-task runHarness(dependsOn: 'classes', type: JavaExec) {
-    main = 'com.jkburges.gretl.Harness'
+task runManifestFileListHarness(dependsOn: 'classes', type: JavaExec) {
+    main = 'com.jkburges.gretl.ManifestFileListHarness'
     classpath = sourceSets.main.runtimeClasspath
 }
